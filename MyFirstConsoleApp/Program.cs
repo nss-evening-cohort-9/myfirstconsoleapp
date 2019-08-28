@@ -1,69 +1,107 @@
 ﻿using System;
 using System.Collections.Generic;
+using MyFirstConsoleApp.Examples;
 
 namespace MyFirstConsoleApp
 {
-
-
-
-
-
     class Program
     {
         static void Main(string[] args)
         {
-            //string myVariable = "Hello World!";
-            string myStringVariable;
-            myStringVariable = "steve";
+            Console.WriteLine("Please enter your full name...");
+            var input = Console.ReadLine();
 
-            int myIntVariable;
-            myIntVariable = 12341234;
-
-            decimal myDecimalVariable;
-            myDecimalVariable = 12341234.123m;
+            var name = new Name
+            {
+                FullName = input,
+                FirstName = "steve"
+            };
             
-            bool myBool = true;
-
-            if (myBool) 
+            var anotherName = new Name
             {
-                Console.WriteLine("We'll never hit this code.");
-            }
+                FullName = "bob",
+                FirstName = "bobby"
+            };
 
-            switch (myIntVariable)
-            {
-                case 1:
-                    Console.WriteLine("We'll never hit this code.");
-                    break;
-                case 12341234:
-                    Console.WriteLine("We'll hit this code.");
-                    break;
-                default: 
-                    Console.WriteLine("We'll never hit this code.");
-                    break;
-            }
+            //var differentKindsOfThings = new List<object>();
 
-            for (var i = 0; i < 5; i++)
-            {
-                Console.WriteLine($"we're on iteration {i}");
-            }
+            //differentKindsOfThings.Add(anotherName);
 
-            var myThing = new { Stuff = "steve", otherproperty = 123, };
+            //differentKindsOfThings.Add(123);
+
+            //var theRealNumber = (int) differentKindsOfThings[1];
             
-            List<string> myStrings = new List<string>();
-            myStrings.Add("blerg");
-            myStrings.Add("blarg");
-            myStrings.Insert(1,"blirg");
-            myStrings.Remove("blirg");
-            myStrings.RemoveAt(1);
+            /*var pointer = originalPerson;
 
-            foreach (var myString in myStrings)
+            //if (originalPerson == anotherOriginalPerson)
+            //{
+            //    Console.WriteLine("This will never happen");
+            //}
+
+            //if (originalPerson == pointer)
+            //{
+            //    originalPerson.Name = "Bob The Conqueror";
+            //    Console.WriteLine("The things are the same");
+            //}
+
+            //anotherOriginalPerson = pointer;
+
+            //if (originalPerson == anotherOriginalPerson && anotherOriginalPerson == pointer)
+            //{
+            //    Console.WriteLine("The things are all the same");
+            //}
+
+            //if (originalPerson.Name == anotherOriginalPerson.Name)
+            //{
+
+            }*/
+            
+            var originalPerson = new Person(input,17,200);
+            
+            var anotherOriginalPerson = new Person("Someone Else",17,200);
+
+            originalPerson.Walk();
+
+            var stuffToEat = new Food {Name = "Anchovie Pizza", Calories = 1100};
+
+            originalPerson.Eat(stuffToEat);
+            originalPerson.Eat("taco", 300);
+
+            anotherOriginalPerson.Walk();
+
+            Console.WriteLine(name.FullName);
+
+
+
+            var myCar = new Car(5);
+
+            myCar.Color = CarColor.Aqua;
+
+            myCar.Start(originalPerson);
+            myCar.Accelerate(40);
+            myCar.Accelerate(40);
+            myCar.Accelerate(40);
+            myCar.Accelerate(40);
+            myCar.Accelerate(40);
+            myCar.Accelerate(40);
+            myCar.Accelerate(40);
+            myCar.Accelerate(40);
+            myCar.Accelerate(40);
+            myCar.Accelerate(40);
+
+
+            var people = new List<Person>();
+            people.Add(originalPerson);
+            people.Add(anotherOriginalPerson);
+
+            foreach (var person in people)
             {
-                Console.WriteLine(myString);
+                person.Eat("taco",300);
             }
 
-            Console.WriteLine(myThing.Stuff);
-            //myStrings.Add(1);
-            //myStrings.Add(true);
+
+            Console.ReadLine();
+
 
         }
     }
